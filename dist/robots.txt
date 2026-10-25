@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lucasjmgeurts-jpg.github.io/max-website/sitemap.xml

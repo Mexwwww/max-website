@@ -1,0 +1,1 @@
+{"name":"max-geurts-portfolio","version":"2.0.0","private":true,"description":"Static PHP and Laravel developer portfolio for Max Geurts","scripts":{"build":"python3 redesign/build.py","check":"python3 redesign/check.py"}}

@@ -1,0 +1,7 @@
+document.documentElement.classList.add('js');
+const menu=document.querySelector('.menu');
+const nav=document.querySelector('.nav-links');
+if(menu&&nav){menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));nav.classList.toggle('open',open);menu.textContent=open?'Close ✕':'Menu ☰'});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.getAttribute('aria-expanded')==='true'){menu.click();menu.focus()}});}
+const buttons=[...document.querySelectorAll('[data-filter]')];
+function filterProjects(kind){const valid=['all','business','software','game'];if(!valid.includes(kind))kind='all';let count=0;document.querySelectorAll('[data-category]').forEach(el=>{el.hidden=kind!=='all'&&el.dataset.category!==kind;if(!el.hidden)count++});buttons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.filter===kind)));const status=document.querySelector('.filter-status');if(status)status.textContent=`${count} project${count===1?'':'s'} shown`;}
+if(buttons.length){buttons.forEach(b=>b.addEventListener('click',()=>{filterProjects(b.dataset.filter);history.replaceState(null,'','#'+b.dataset.filter)}));const oldCategory=new URLSearchParams(location.search).get('category');filterProjects(oldCategory==='unity'||oldCategory==='unreal-engine'?'game':oldCategory==='laravel'?'business':location.hash.slice(1)||'all');window.addEventListener('hashchange',()=>filterProjects(location.hash.slice(1)));}
