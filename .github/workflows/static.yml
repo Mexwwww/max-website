@@ -36,9 +36,9 @@ jobs:
         with:
           node-version: '20' # Update to your Node version if necessary
 
-      - name: Install dependencies and Build
+- name: Install dependencies and Build
         run: |
-          npm ci
+          npm install
           npm run build
 
       - name: Setup Pages
